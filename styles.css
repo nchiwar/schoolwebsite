@@ -1,0 +1,177 @@
+/* Custom CSS for Tailwind */
+:root {
+  --coral-600: #f56565;
+  --coral-700: #c53030;
+}
+
+.theme-primary {
+  --button-radius: 12px;
+  --card-radius: 16px;
+  --bg-color: #fef6f5;
+  --text-color: #2d3436;
+}
+
+.theme-secondary {
+  --button-radius: 4px;
+  --card-radius: 8px;
+  --bg-color: #edf2f7;
+  --text-color: #1a202c;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Header */
+.header {
+  padding: 1rem;
+}
+
+.logo {
+  color: var(--coral-600);
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fed7d7;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* Sections */
+.section {
+  padding: 2rem 0;
+  min-height: 50vh;
+}
+
+/* Buttons */
+.button {
+  background-color: var(--coral-600);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--button-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.button:hover {
+  background-color: var(--coral-700);
+  transform: scale(1.05);
+}
+
+/* Cards */
+.news-card, .program-item {
+  border-radius: var(--card-radius);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Form and Map */
+.input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--button-radius);
+  font-family: 'Poppins', sans-serif;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--coral-600);
+  box-shadow: 0 0 5px rgba(245, 101, 101, 0.3);
+}
+
+.textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-success {
+  font-weight: 600;
+  animation: fadeOut 3s ease forwards;
+}
+
+/* Animations */
+@keyframes fade-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-left, .nav-right {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    background-color: var(--coral-600);
+    width: 200px;
+    padding: 1rem;
+    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-left.open, .nav-right.open {
+    display: flex;
+  }
+
+  .nav-link, .language-select, .theme-select, .role-select {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .section h2 {
+    font-size: 2rem;
+  }
+}

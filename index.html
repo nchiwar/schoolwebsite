@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduHub Schools</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.9/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-redux@8.1.3/dist/react-redux.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/react-leaflet@4.2.1/dist/react-leaflet.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.11.5/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-i18next@14.1.2/dist/umd/react-i18next.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Mock Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect } = React;
+const { useSelector, useDispatch, Provider } = ReactRedux;
+const { MapContainer, TileLayer, Marker, Popup } = window.ReactLeaflet || {};
+const { useTranslation, initReactI18next } = window.ReactI18next;
+
+// i18next Initialization
+i18next
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: {
+        translation: {
+          "welcome": "Welcome to EduHub Schools",
+          "mission": "Empowering young minds through quality education",
+          "programs": "Programs",
+          "admissions": "Admissions",
+          "events": "Events",
+          "contact": "Contact",
+          "primary": "Primary School",
+          "secondary": "Secondary School",
+          "learn_more": "Learn More",
+          "apply_now": "Apply Now",
+          "submit": "Submit",
+          "name": "Name",
+          "email": "Email",
+          "subject": "Subject",
+          "message": "Message",
+          "login": "Login",
+          "logout": "Logout",
+          "theme": "Theme",
+          "role_student": "Student",
+          "role_faculty": "Faculty",
+          "role_admin": "Admin",
+          "virtual_tour": "Virtual Tour",
+          "news_title": "Latest News",
+          "programs_title": "Our Academic Programs",
+          "admissions_title": "Join Our Community",
+          "events_title": "Upcoming Events",
+          "contact_title": "Get in Touch",
+          "map_title": "Campus Map",
+          "form_success": "Submission successful! Thank you!",
+          "notification": "New event: Open House on {date}",
+          "download_guide": "Download Admissions Guide"
+        }
+      },
+      es: {
+        translation: {
+          "welcome": "Bienvenidos a EduHub Schools",
+          "mission": "Empoderando mentes jóvenes a través de una educación de calidad",
+          "programs": "Programas",
+          "admissions": "Admisiones",
+          "events": "Eventos",
+          "contact": "Contacto",
+          "primary": "Escuela Primaria",
+          "secondary": "Escuela Secundaria",
+          "learn_more": "Saber Más",
+          "apply_now": "Solicitar Ahora",
+          "submit": "Enviar",
+          "name": "Nombre",
+          "email": "Correo Electrónico",
+          "subject": "Asunto",
+          "message": "Mensaje",
+          "login": "Iniciar Sesión",
+          "logout": "Cerrar Sesión",
+          "theme": "Tema",
+          "role_student": "Estudiante",
+          "role_faculty": "Facultad",
+          "role_admin": "Administrador",
+          "virtual_tour": "Tour Virtual",
+          "news_title": "Últimas Noticias",
+          "programs_title": "Nuestros Programas Académicos",
+          "admissions_title": "Únete a Nuestra Comunidad",
+          "events_title": "Próximos Eventos",
+          "contact_title": "Contáctanos",
+          "map_title": "Mapa del Campus",
+          "form_success": "¡Envío exitoso! ¡Gracias!",
+          "notification": "Nuevo evento: Jornada de puertas abiertas el {date}",
+          "download_guide": "Descargar Guía de Admisiones"
+        }
+      },
+      fr: {
+        translation: {
+          "welcome": "Bienvenue à EduHub Schools",
+          "mission": "Habiliter les jeunes esprits grâce à une éducation de qualité",
+          "programs": "Programmes",
+          "admissions": "Admissions",
+          "events": "Événements",
+          "contact": "Contact",
+          "primary": "École Primaire",
+          "secondary": "École Secondaire",
+          "learn_more": "En Savoir Plus",
+          "apply_now": "Postuler Maintenant",
+          "submit": "Envoyer",
+          "name": "Nom",
+          "email": "Email",
+          "subject": "Sujet",
+          "message": "Message",
+          "login": "Connexion",
+          "logout": "Déconnexion",
+          "theme": "Thème",
+          "role_student": "Étudiant",
+          "role_faculty": "Faculté",
+          "role_admin": "Administrateur",
+          "virtual_tour": "Visite Virtuelle",
+          "news_title": "Dernières Nouvelles",
+          "programs_title": "Nos Programmes Académiques",
+          "admissions_title": "Rejoignez Notre Communauté",
+          "events_title": "Événements à Venir",
+          "contact_title": "Contactez-Nous",
+          "map_title": "Plan du Campus",
+          "form_success": "Soumission réussie ! Merci !",
+          "notification": "Nouvel événement : Journée portes ouvertes le {date}",
+          "download_guide": "Télécharger le Guide des Admissions"
+        }
+      }
+    },
+    lng: "en",
+    fallbackLng: "en",
+    interpolation: { escapeValue: false }
+  });
+
+// Redux Store
+const initialState = {
+  user: { role: null, isAuthenticated: false },
+  news: [
+    { id: 1, title: "Science Fair 2025", summary: "Join our annual science fair on March 10!", image: "https://via.placeholder.com/300x200?text=Science+Fair" },
+    { id: 2, title: "Parent-Teacher Meeting", summary: "Scheduled for February 15, 2025.", image: "https://via.placeholder.com/300x200?text=Meeting" },
+    { id: 3, title: "Sports Day Success", summary: "Celebrating our students' achievements!", image: "https://via.placeholder.com/300x200?text=Sports+Day" }
+  ],
+  programs: {
+    primary: [
+      { id: 1, title: "Math Fundamentals", description: "Interactive math for young learners." },
+      { id: 2, title: "Science Explorers", description: "Hands-on experiments for kids." }
+    ],
+    secondary: [
+      { id: 3, title: "Advanced Biology", description: "In-depth study of living organisms." },
+      { id: 4, title: "Literature Analysis", description: "Exploring classic and modern texts." }
+    ]
+  },
+  notifications: []
+};
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return { ...state, user: { role: action.payload, isAuthenticated: true } };
+    case 'LOGOUT':
+      return { ...state, user: { role: null, isAuthenticated: false } };
+    case 'ADD_NOTIFICATION':
+      return { ...state, notifications: [...state.notifications, action.payload] };
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(reducer);
+
+// Header Component
+const Header = ({ toggleTheme }) => {
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const { role, isAuthenticated } = useSelector(state => state.user);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setIsMenuOpen(false);
+  };
+
+  const handleLogin = (role) => {
+    dispatch({ type: 'LOGIN', payload: role });
+    gtag('event', 'login', { event_category: 'Auth', event_label: role });
+    setIsMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' });
+    gtag('event', 'logout', { event_category: 'Auth', event_label: 'Logout' });
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <header className="header bg-coral-600 text-white fixed top-0 left-0 right-0 z-10 shadow-md">
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        <div className="flex items-center gap-4">
+          <div className="logo text-2xl font-bold">[Logo]</div>
+          <nav className={`nav-left ${isMenuOpen ? 'open' : ''}`}>
+            <a href="#home" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('welcome')}</a>
+            <a href="#programs" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('programs')}</a>
+            <a href="#admissions" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('admissions')}</a>
+          </nav>
+        </div>
+        <div className="flex items-center gap-4">
+          <nav className={`nav-right ${isMenuOpen ? 'open' : ''}`}>
+            <a href="#events" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('events')}</a>
+            <a href="#contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('contact')}</a>
+            <select
+              className="language-select bg-coral-700 text-white rounded p-2"
+              onChange={(e) => changeLanguage(e.target.value)}
+              defaultValue="en"
+              aria-label={t('theme')}
+            >
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+            </select>
+            <select
+              className="theme-select bg-coral-700 text-white rounded p-2"
+              onChange={(e) => toggleTheme(e.target.value)}
+              defaultValue="primary"
+              aria-label={t('theme')}
+            >
+              <option value="primary">{t('primary')}</option>
+              <option value="secondary">{t('secondary')}</option>
+            </select>
+            {!isAuthenticated ? (
+              <select
+                className="role-select bg-coral-700 text-white rounded p-2"
+                onChange={(e) => handleLogin(e.target.value)}
+                defaultValue=""
+                aria-label={t('login')}
+              >
+                <option value="" disabled>{t('login')}</option>
+                <option value="student">{t('role_student')}</option>
+                <option value="faculty">{t('role_faculty')}</option>
+                <option value="admin">{t('role_admin')}</option>
+              </select>
+            ) : (
+              <button onClick={handleLogout} className="nav-link">{t('logout')}</button>
+            )}
+          </nav>
+          <button className="hamburger md:hidden" onClick={toggleMenu} aria-label="Toggle menu">
+            <i className={isMenuOpen ? "fas fa-times" : "fas fa-bars"}></i>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+// Homepage Component
+const Homepage = () => {
+  const { t } = useTranslation();
+  const news = useSelector(state => state.news);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const images = [
+    "https://via.placeholder.com/1200x400?text=Campus+View",
+    "https://via.placeholder.com/1200x400?text=Classroom",
+    "https://via.placeholder.com/1200x400?text=Playground"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCarouselIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <section id="home" className="section pt-20">
+      <div className="container mx-auto px-4">
+        <div className="hero relative">
+          <img src={images[carouselIndex]} alt="Campus" className="w-full h-96 object-cover rounded-lg" />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+            <h2 className="text-4xl font-bold text-white text-center">{t('mission')}</h2>
+          </div>
+        </div>
+        <div className="news mt-8">
+          <h3 className="text-2xl font-semibold text-center mb-4">{t('news_title')}</h3>
+          <div className="flex overflow-x-auto gap-4 pb-4">
+            {news.map(item => (
+              <div key={item.id} className="news-card flex-shrink-0 w-80 bg-white shadow-md rounded-lg p-4 animate-fade-right">
+                <img src={item.image} alt={item.title} className="w-full h-40 object-cover rounded mb-2" />
+                <h4 className="text-lg font-semibold">{item.title}</h4>
+                <p className="text-gray-600">{item.summary}</p>
+                <a href="#events" className="button mt-2 inline-block">{t('learn_more')}</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Programs Component
+const Programs = () => {
+  const { t } = useTranslation();
+  const programs = useSelector(state => state.programs);
+  const [activeTab, setActiveTab] = useState('primary');
+
+  return (
+    <section id="programs" className="section">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-6">{t('programs_title')}</h2>
+        <div className="tabs flex justify-center gap-4 mb-6">
+          <button
+            className={`tab-button px-4 py-2 rounded ${activeTab === 'primary' ? 'bg-coral-600 text-white' : 'bg-gray-200'}`}
+            onClick={() => setActiveTab('primary')}
+          >
+            {t('primary')}
+          </button>
+          <button
+            className={`tab-button px-4 py-2 rounded ${activeTab === 'secondary' ? 'bg-coral-600 text-white' : 'bg-gray-200'}`}
+            onClick={() => setActiveTab('secondary')}
+          >
+            {t('secondary')}
+          </button>
+        </div>
+        <div className="programs-list animate-fade-left">
+          {programs[activeTab].map(program => (
+            <div key={program.id} className="program-item bg-white shadow-md rounded-lg p-6 mb-4">
+              <h4 className="text-xl font-semibold">{program.title}</h4>
+              <p className="text-gray-600">{program.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Admissions Component
+const Admissions = () => {
+  const { t } = useTranslation();
+
+  const handleDownload = () => {
+    gtag('event', 'download_guide', { event_category: 'Button', event_label: 'Admissions Guide' });
+    alert('Downloading admissions guide...');
+  };
+
+  return (
+    <section id="admissions" className="section">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row gap-8">
+        <div className="md:w-1/2 animate-fade-right">
+          <h2 className="text-3xl font-bold mb-4">{t('admissions_title')}</h2>
+          <p className="text-gray-600 mb-4">
+            Our admissions process is simple and transparent. Submit your application with academic records, a personal statement, and two references by June 30, 2025. Contact our admissions office for assistance.
+          </p>
+          <a href="#contact" className="button">{t('apply_now')}</a>
+        </div>
+        <div className="md:w-1/2 animate-fade-left">
+          <button onClick={handleDownload} className="button w-full">{t('download_guide')}</button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Events Component
+const Events = () => {
+  const { t } = useTranslation();
+  const events = [
+    { date: "2025-02-15", title: "Parent-Teacher Meeting", time: "10:00 AM", location: "Main Hall" },
+    { date: "2025-03-10", title: "Science Fair", time: "9:00 AM", location: "Science Building" },
+    { date: "2025-04-20", title: "Sports Day", time: "8:00 AM", location: "Sports Field" }
+  ];
+
+  return (
+    <section id="events" className="section">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-6">{t('events_title')}</h2>
+        <table className="w-full bg-white shadow-md rounded-lg animate-fade-right">
+          <thead>
+            <tr className="bg-coral-600 text-white">
+              <th className="p-2">Date</th>
+              <th className="p-2">Event</th>
+              <th className="p-2">Time</th>
+              <th className="p-2">Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            {events.map((event, index) => (
+              <tr key={index} className="border-t">
+                <td className="p-2 text-center">{event.date}</td>
+                <td className="p-2 text-center">{event.title}</td>
+                <td className="p-2 text-center">{event.time}</td>
+                <td className="p-2 text-center">{event.location}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+};
+
+// Contact and Map Component
+const ContactMap = () => {
+  const { t } = useTranslation();
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = () => {
+    if (formData.name && formData.email && formData.message) {
+      gtag('event', 'contact_submit', { event_category: 'Form', event_label: 'Contact Form' });
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      alert('Please fill all required fields');
+    }
+  };
+
+  return (
+    <section id="contact" className="section">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row gap-8">
+        <div className="md:w-1/2 animate-fade-right">
+          <h2 className="text-3xl font-bold mb-4">{t('contact_title')}</h2>
+          {showSuccess && <p className="form-success text-coral-600">{t('form_success')}</p>}
+          <div className="contact-form">
+            <input
+              type="text"
+              placeholder={t('name')}
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="input"
+              aria-label={t('name')}
+            />
+            <input
+              type="email"
+              placeholder={t('email')}
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="input"
+              aria-label={t('email')}
+            />
+            <input
+              type="text"
+              placeholder={t('subject')}
+              value={formData.subject}
+              onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+              className="input"
+              aria-label={t('subject')}
+            />
+            <textarea
+              placeholder={t('message')}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="input textarea"
+              aria-label={t('message')}
+            ></textarea>
+            <button onClick={handleSubmit} className="button">{t('submit')}</button>
+          </div>
+        </div>
+        <div className="md:w-1/2 animate-fade-left">
+          <h2 className="text-3xl font-bold mb-4">{t('map_title')}</h2>
+          {MapContainer ? (
+            <MapContainer center={[6.5244, 3.3792]} zoom={15} style={{ height: "400px", width: "100%" }}>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              />
+              <Marker position={[6.5244, 3.3792]}>
+                <Popup>EduHub Schools Main Campus</Popup>
+              </Marker>
+            </MapContainer>
+          ) : (
+            <p className="text-red-500 text-center">Map unavailable due to loading issues</p>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Virtual Tour Component
+const VirtualTour = () => {
+  const { t } = useTranslation();
+  const [isTourOpen, setIsTourOpen] = useState(false);
+
+  useEffect(() => {
+    if (isTourOpen && window.pannellum) {
+      pannellum.viewer('tour-container', {
+        type: 'equirectangular',
+        panorama: 'https://pannellum.org/images/alma.jpg',
+        autoLoad: true
+      });
+    }
+  }, [isTourOpen]);
+
+  return (
+    <section id="tour" className="section">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-6">{t('virtual_tour')}</h2>
+        <button onClick={() => setIsTourOpen(!isTourOpen)} className="button mx-auto block">
+          {isTourOpen ? 'Close Tour' : 'Start Virtual Tour'}
+        </button>
+        {isTourOpen && (
+          <div id="tour-container" className="mt-4" style={{ height: '400px', width: '100%' }}></div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+// Notifications Component
+const Notifications = () => {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const notifications = useSelector(state => state.notifications);
+
+  useEffect(() => {
+    // Mock WebSocket notification
+    const mockNotification = { id: 1, message: t('notification', { date: 'March 10, 2025' }) };
+    dispatch({ type: 'ADD_NOTIFICATION', payload: mockNotification });
+  }, [dispatch, t]);
+
+  return (
+    <div className="fixed bottom-4 right-4 z-20">
+      {notifications.map((notif, index) => (
+        <div key={index} className="notification bg-coral-600 text-white p-4 rounded shadow-md mb-2 animate-fade-right">
+          {notif.message}
+          <button
+            className="ml-2 text-white font-bold"
+            onClick={() => dispatch({ type: 'ADD_NOTIFICATION', payload: [] })}
+          >
+            ✕
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Footer Component
+const Footer = () => {
+  return (
+    <footer className="bg-coral-600 text-white py-4 text-center">
+      <p>EduHub Schools &copy; 2025 | contact@eduhub.org</p>
+    </footer>
+  );
+};
+
+// Main App Component
+const App = () => {
+  const [theme, setTheme] = useState('primary');
+
+  const toggleTheme = (newTheme) => {
+    setTheme(newTheme);
+    document.documentElement.classList.remove('theme-primary', 'theme-secondary');
+    document.documentElement.classList.add(`theme-${newTheme}`);
+  };
+
+  return (
+    <Provider store={store}>
+      <div className={`theme-${theme}`}>
+        <Header toggleTheme={toggleTheme} />
+        <Notifications />
+        <main>
+          <Homepage />
+          <Programs />
+          <Admissions />
+          <Events />
+          <VirtualTour />
+          <ContactMap />
+        </main>
+        <Footer />
+      </div>
+    </Provider>
+  );
+};
+
+// Render the App
+ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+</body>
+</html>
