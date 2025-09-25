@@ -48,4 +48,5 @@ Update README.md “Demo” with deployed URL.
 Resume Pitch: "Developed a dynamic school website with React, featuring solid white card backgrounds for Programs section, visible light/dark mode toggle, and optimized UI, showcasing expertise in responsive design and debugging."
 
 Demo
-[Insert deployed URL after deployment]
+https://nchiwar.github.io/schoolwebsite/
+
