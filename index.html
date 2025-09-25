@@ -16,7 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/react-i18next@14.1.2/dist/umd/react-i18next.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lato:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
   <link rel="stylesheet" href="styles.css">
@@ -28,7 +28,7 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 </head>
-<body>
+<body style="background-color: #E6FFFA;">
   <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect } = React;
@@ -44,11 +44,14 @@ i18next
       en: {
         translation: {
           "welcome": "Welcome to EduHub Schools",
-          "mission": "Empowering young minds through quality education",
+          "welcome_message": "EduHub Schools empowers students through dynamic primary and secondary education, nurturing innovation and collaboration.",
+          "discover_programs": "Discover Our Programs",
           "programs": "Programs",
           "admissions": "Admissions",
           "events": "Events",
           "contact": "Contact",
+          "faculty": "Our Faculty",
+          "portal": "Student Portal",
           "primary": "Primary School",
           "secondary": "Secondary School",
           "learn_more": "Learn More",
@@ -61,29 +64,40 @@ i18next
           "login": "Login",
           "logout": "Logout",
           "theme": "Theme",
+          "theme_light": "Light",
+          "theme_dark": "Dark",
+          "theme_primary": "Primary",
+          "theme_secondary": "Secondary",
           "role_student": "Student",
           "role_faculty": "Faculty",
           "role_admin": "Admin",
           "virtual_tour": "Virtual Tour",
           "news_title": "Latest News",
-          "programs_title": "Our Academic Programs",
+          "programs_title": "Our Programs",
           "admissions_title": "Join Our Community",
-          "events_title": "Upcoming Events",
-          "contact_title": "Get in Touch",
-          "map_title": "Campus Map",
-          "form_success": "Submission successful! Thank you!",
+          "events_title": "School Events",
+          "contact_title": "Contact Us",
+          "map_title": "Visit Our Campus",
+          "faculty_title": "Meet Our Faculty",
+          "portal_title": "Student Portal",
+          "form_success": "Submission sent!",
           "notification": "New event: Open House on {date}",
-          "download_guide": "Download Admissions Guide"
+          "download_guide": "Download Admissions Guide",
+          "error_fallback": "Oops, something broke. Try refreshing.",
+          "image_unavailable": "Image Unavailable"
         }
       },
       es: {
         translation: {
           "welcome": "Bienvenidos a EduHub Schools",
-          "mission": "Empoderando mentes jóvenes a través de una educación de calidad",
+          "welcome_message": "EduHub Schools empodera a los estudiantes a través de una educación primaria y secundaria dinámica, fomentando la innovación y la colaboración.",
+          "discover_programs": "Descubre Nuestros Programas",
           "programs": "Programas",
           "admissions": "Admisiones",
           "events": "Eventos",
           "contact": "Contacto",
+          "faculty": "Nuestra Facultad",
+          "portal": "Portal Estudiantil",
           "primary": "Escuela Primaria",
           "secondary": "Escuela Secundaria",
           "learn_more": "Saber Más",
@@ -96,29 +110,40 @@ i18next
           "login": "Iniciar Sesión",
           "logout": "Cerrar Sesión",
           "theme": "Tema",
+          "theme_light": "Claro",
+          "theme_dark": "Oscuro",
+          "theme_primary": "Primario",
+          "theme_secondary": "Secundario",
           "role_student": "Estudiante",
           "role_faculty": "Facultad",
           "role_admin": "Administrador",
           "virtual_tour": "Tour Virtual",
           "news_title": "Últimas Noticias",
-          "programs_title": "Nuestros Programas Académicos",
+          "programs_title": "Nuestros Programas",
           "admissions_title": "Únete a Nuestra Comunidad",
-          "events_title": "Próximos Eventos",
+          "events_title": "Eventos Escolares",
           "contact_title": "Contáctanos",
-          "map_title": "Mapa del Campus",
-          "form_success": "¡Envío exitoso! ¡Gracias!",
+          "map_title": "Visita Nuestro Campus",
+          "faculty_title": "Conoce a Nuestra Facultad",
+          "portal_title": "Portal Estudiantil",
+          "form_success": "¡Envío exitoso!",
           "notification": "Nuevo evento: Jornada de puertas abiertas el {date}",
-          "download_guide": "Descargar Guía de Admisiones"
+          "download_guide": "Descargar Guía de Admisiones",
+          "error_fallback": "¡Ups, algo se rompió! Por favor, recarga.",
+          "image_unavailable": "Imagen No Disponible"
         }
       },
       fr: {
         translation: {
           "welcome": "Bienvenue à EduHub Schools",
-          "mission": "Habiliter les jeunes esprits grâce à une éducation de qualité",
+          "welcome_message": "EduHub Schools donne du pouvoir aux étudiants grâce à une éducation primaire et secondaire dynamique, favorisant l'innovation et la collaboration.",
+          "discover_programs": "Découvrez Nos Programmes",
           "programs": "Programmes",
           "admissions": "Admissions",
           "events": "Événements",
           "contact": "Contact",
+          "faculty": "Notre Faculté",
+          "portal": "Portail Étudiant",
           "primary": "École Primaire",
           "secondary": "École Secondaire",
           "learn_more": "En Savoir Plus",
@@ -131,19 +156,27 @@ i18next
           "login": "Connexion",
           "logout": "Déconnexion",
           "theme": "Thème",
+          "theme_light": "Clair",
+          "theme_dark": "Sombre",
+          "theme_primary": "Primaire",
+          "theme_secondary": "Secondaire",
           "role_student": "Étudiant",
           "role_faculty": "Faculté",
           "role_admin": "Administrateur",
           "virtual_tour": "Visite Virtuelle",
           "news_title": "Dernières Nouvelles",
-          "programs_title": "Nos Programmes Académiques",
+          "programs_title": "Nos Programmes",
           "admissions_title": "Rejoignez Notre Communauté",
-          "events_title": "Événements à Venir",
+          "events_title": "Événements Scolaires",
           "contact_title": "Contactez-Nous",
-          "map_title": "Plan du Campus",
-          "form_success": "Soumission réussie ! Merci !",
+          "map_title": "Visitez Notre Campus",
+          "faculty_title": "Rencontrez Notre Faculté",
+          "portal_title": "Portail Étudiant",
+          "form_success": "Soumission envoyée !",
           "notification": "Nouvel événement : Journée portes ouvertes le {date}",
-          "download_guide": "Télécharger le Guide des Admissions"
+          "download_guide": "Télécharger le Guide des Admissions",
+          "error_fallback": "Oups, quelque chose a cassé. Essayez de rafraîchir.",
+          "image_unavailable": "Image Indisponible"
         }
       }
     },
@@ -156,20 +189,25 @@ i18next
 const initialState = {
   user: { role: null, isAuthenticated: false },
   news: [
-    { id: 1, title: "Science Fair 2025", summary: "Join our annual science fair on March 10!", image: "https://via.placeholder.com/300x200?text=Science+Fair" },
-    { id: 2, title: "Parent-Teacher Meeting", summary: "Scheduled for February 15, 2025.", image: "https://via.placeholder.com/300x200?text=Meeting" },
-    { id: 3, title: "Sports Day Success", summary: "Celebrating our students' achievements!", image: "https://via.placeholder.com/300x200?text=Sports+Day" }
+    { id: 1, title: "Science Fair 2025", summary: "Showcase your projects on March 10!", image: "https://picsum.photos/250/150?random=30" },
+    { id: 2, title: "Parent-Teacher Night", summary: "Meet our staff on February 15, 2025!", image: "https://picsum.photos/250/150?random=31" },
+    { id: 3, title: "Sports Festival", summary: "Join the fun on April 20!", image: "https://picsum.photos/250/150?random=32" }
   ],
   programs: {
     primary: [
-      { id: 1, title: "Math Fundamentals", description: "Interactive math for young learners." },
-      { id: 2, title: "Science Explorers", description: "Hands-on experiments for kids." }
+      { id: 1, title: "Math Quest", description: "Interactive math challenges for young learners." },
+      { id: 2, title: "Science Explorers", description: "Exciting experiments for curious kids." }
     ],
     secondary: [
-      { id: 3, title: "Advanced Biology", description: "In-depth study of living organisms." },
-      { id: 4, title: "Literature Analysis", description: "Exploring classic and modern texts." }
+      { id: 3, title: "Biology Adventures", description: "Hands-on labs to explore life sciences." },
+      { id: 4, title: "Creative Writing", description: "Craft stories and express creativity." }
     ]
   },
+  faculty: [
+    { id: 1, name: "Ms. Olivia", subject: "Mathematics", image: "https://picsum.photos/80/80?random=33" },
+    { id: 2, name: "Mr. Ethan", subject: "Science", image: "https://picsum.photos/80/80?random=34" },
+    { id: 3, name: "Mrs. Lily", subject: "Literature", image: "https://picsum.photos/80/80?random=35" }
+  ],
   notifications: []
 };
 
@@ -180,7 +218,7 @@ const reducer = (state = initialState, action) => {
     case 'LOGOUT':
       return { ...state, user: { role: null, isAuthenticated: false } };
     case 'ADD_NOTIFICATION':
-      return { ...state, notifications: [...state.notifications, action.payload] };
+      return { ...state, notifications: action.payload.length ? [...state.notifications, ...action.payload] : [] };
     default:
       return state;
   }
@@ -188,83 +226,117 @@ const reducer = (state = initialState, action) => {
 
 const store = Redux.createStore(reducer);
 
+// Error Boundary Component
+const ErrorBoundary = ({ children }) => {
+  const [hasError, setHasError] = useState(false);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const errorHandler = (error) => {
+      console.error('ErrorBoundary caught:', error);
+      setHasError(true);
+    };
+    window.addEventListener('error', errorHandler);
+    return () => window.removeEventListener('error', errorHandler);
+  }, []);
+
+  if (hasError) {
+    return <div className="text-center p-6 text-red-600 z-50">{t('error_fallback')}</div>;
+  }
+
+  return children;
+};
+
 // Header Component
 const Header = ({ toggleTheme }) => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { role, isAuthenticated } = useSelector(state => state.user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleDropdown = () => {
+    console.log('Toggling dropdown:', !isDropdownOpen); // Debug log
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
   };
 
   const handleLogin = (role) => {
     dispatch({ type: 'LOGIN', payload: role });
     gtag('event', 'login', { event_category: 'Auth', event_label: role });
-    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
   };
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
     gtag('event', 'logout', { event_category: 'Auth', event_label: 'Logout' });
-    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
   };
 
   return (
-    <header className="header bg-coral-600 text-white fixed top-0 left-0 right-0 z-10 shadow-md">
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          <div className="logo text-2xl font-bold">[Logo]</div>
-          <nav className={`nav-left ${isMenuOpen ? 'open' : ''}`}>
-            <a href="#home" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('welcome')}</a>
-            <a href="#programs" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('programs')}</a>
-            <a href="#admissions" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('admissions')}</a>
-          </nav>
-        </div>
-        <div className="flex items-center gap-4">
-          <nav className={`nav-right ${isMenuOpen ? 'open' : ''}`}>
-            <a href="#events" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('events')}</a>
-            <a href="#contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('contact')}</a>
-            <select
-              className="language-select bg-coral-700 text-white rounded p-2"
-              onChange={(e) => changeLanguage(e.target.value)}
-              defaultValue="en"
-              aria-label={t('theme')}
-            >
-              <option value="en">English</option>
-              <option value="es">Español</option>
-              <option value="fr">Français</option>
-            </select>
-            <select
-              className="theme-select bg-coral-700 text-white rounded p-2"
-              onChange={(e) => toggleTheme(e.target.value)}
-              defaultValue="primary"
-              aria-label={t('theme')}
-            >
-              <option value="primary">{t('primary')}</option>
-              <option value="secondary">{t('secondary')}</option>
-            </select>
-            {!isAuthenticated ? (
+    <header className="header bg-white sticky top-0 z-50 shadow-sm">
+      <div className="container mx-auto px-4 flex justify-between items-center py-2">
+        <h1 className="text-xl font-bold text-navy z-50">EduHub Schools</h1>
+        <nav className={`nav ${isMenuOpen ? 'open' : ''} flex gap-2 items-center z-50 flex-nowrap`}>
+          <a href="#welcome" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('welcome')}</a>
+          <a href="#programs" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('programs')}</a>
+          <a href="#admissions" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('admissions')}</a>
+          <a href="#events" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('events')}</a>
+          <a href="#faculty" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('faculty')}</a>
+          <a href="#portal" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('portal')}</a>
+          <a href="#contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>{t('contact')}</a>
+        </nav>
+        <div className="relative z-60">
+          <button className="dropdown-toggle text-navy" onClick={toggleDropdown} aria-label="User Options">
+            <i className="fas fa-circle-user"></i>
+          </button>
+          {isDropdownOpen && (
+            <div className="dropdown-menu absolute right-0 mt-2 bg-white rounded-md shadow-md p-2 w-36 z-60">
               <select
-                className="role-select bg-coral-700 text-white rounded p-2"
-                onChange={(e) => handleLogin(e.target.value)}
-                defaultValue=""
-                aria-label={t('login')}
+                className="theme-select bg-navy text-white rounded px-2 py-1 mb-1 w-full z-60"
+                style={{ display: 'block', visibility: 'visible' }}
+                onChange={(e) => toggleTheme(e.target.value)}
+                defaultValue="light"
+                aria-label={t('theme')}
               >
-                <option value="" disabled>{t('login')}</option>
-                <option value="student">{t('role_student')}</option>
-                <option value="faculty">{t('role_faculty')}</option>
-                <option value="admin">{t('role_admin')}</option>
+                <option value="light">{t('theme_light')}</option>
+                <option value="dark">{t('theme_dark')}</option>
+                <option value="primary">{t('theme_primary')}</option>
+                <option value="secondary">{t('theme_secondary')}</option>
               </select>
-            ) : (
-              <button onClick={handleLogout} className="nav-link">{t('logout')}</button>
-            )}
-          </nav>
-          <button className="hamburger md:hidden" onClick={toggleMenu} aria-label="Toggle menu">
+              <select
+                className="language-select bg-navy text-white rounded px-2 py-1 mb-1 w-full z-60"
+                onChange={(e) => changeLanguage(e.target.value)}
+                defaultValue="en"
+                aria-label="Language"
+              >
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+              </select>
+              {!isAuthenticated ? (
+                <select
+                  className="role-select bg-navy text-white rounded px-2 py-1 w-full z-60"
+                  onChange={(e) => handleLogin(e.target.value)}
+                  defaultValue=""
+                  aria-label={t('login')}
+                >
+                  <option value="" disabled>{t('login')}</option>
+                  <option value="student">{t('role_student')}</option>
+                  <option value="faculty">{t('role_faculty')}</option>
+                  <option value="admin">{t('role_admin')}</option>
+                </select>
+              ) : (
+                <button onClick={handleLogout} className="nav-link w-full text-left z-60">{t('logout')}</button>
+              )}
+            </div>
+          )}
+          <button className="hamburger sm:hidden ml-2" onClick={toggleMenu} aria-label="Toggle menu">
             <i className={isMenuOpen ? "fas fa-times" : "fas fa-bars"}></i>
           </button>
         </div>
@@ -273,45 +345,43 @@ const Header = ({ toggleTheme }) => {
   );
 };
 
+// Welcome Component
+const Welcome = () => {
+  const { t } = useTranslation();
+  return (
+    <section id="welcome" className="section">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-3xl font-bold text-navy mb-3 z-50">{t('welcome')}</h2>
+        <p className="text-charcoal text-base max-w-xl mx-auto mb-4 z-50">{t('welcome_message')}</p>
+        <a href="#programs" className="button inline-block">{t('discover_programs')}</a>
+      </div>
+    </section>
+  );
+};
+
 // Homepage Component
 const Homepage = () => {
   const { t } = useTranslation();
   const news = useSelector(state => state.news);
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const images = [
-    "https://via.placeholder.com/1200x400?text=Campus+View",
-    "https://via.placeholder.com/1200x400?text=Classroom",
-    "https://via.placeholder.com/1200x400?text=Playground"
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [images.length]);
 
   return (
-    <section id="home" className="section pt-20">
+    <section id="home" className="section">
       <div className="container mx-auto px-4">
-        <div className="hero relative">
-          <img src={images[carouselIndex]} alt="Campus" className="w-full h-96 object-cover rounded-lg" />
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-            <h2 className="text-4xl font-bold text-white text-center">{t('mission')}</h2>
-          </div>
-        </div>
-        <div className="news mt-8">
-          <h3 className="text-2xl font-semibold text-center mb-4">{t('news_title')}</h3>
-          <div className="flex overflow-x-auto gap-4 pb-4">
-            {news.map(item => (
-              <div key={item.id} className="news-card flex-shrink-0 w-80 bg-white shadow-md rounded-lg p-4 animate-fade-right">
-                <img src={item.image} alt={item.title} className="w-full h-40 object-cover rounded mb-2" />
-                <h4 className="text-lg font-semibold">{item.title}</h4>
-                <p className="text-gray-600">{item.summary}</p>
-                <a href="#events" className="button mt-2 inline-block">{t('learn_more')}</a>
-              </div>
-            ))}
-          </div>
+        <h3 className="text-xl font-bold text-navy text-center mb-4 z-50">{t('news_title')}</h3>
+        <div className="grid grid-cols-1 gap-2.5 max-w-2xl mx-auto">
+          {news.map(item => (
+            <div key={item.id} className="news-card bg-card-bg shadow-sm rounded-md p-4 border border-charcoal animate-slide-up z-40">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-36 object-cover rounded-md mb-2"
+                onError={(e) => (e.target.outerHTML = '<p className="text-center text-charcoal z-50">' + t('image_unavailable') + '</p>')}
+              />
+              <h4 className="text-base font-bold text-navy z-50">{item.title}</h4>
+              <p className="text-charcoal z-50">{item.summary}</p>
+              <a href="#events" className="button mt-2 inline-block">{t('learn_more')}</a>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -322,33 +392,71 @@ const Homepage = () => {
 const Programs = () => {
   const { t } = useTranslation();
   const programs = useSelector(state => state.programs);
-  const [activeTab, setActiveTab] = useState('primary');
+  const [openCard, setOpenCard] = useState(null);
+
+  useEffect(() => {
+    console.log('Programs state:', programs); // Debug log
+  }, [programs]);
+
+  const toggleCard = (id) => {
+    console.log('Toggling card:', id); // Debug log
+    setOpenCard(openCard === id ? null : id);
+  };
 
   return (
     <section id="programs" className="section">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6">{t('programs_title')}</h2>
-        <div className="tabs flex justify-center gap-4 mb-6">
-          <button
-            className={`tab-button px-4 py-2 rounded ${activeTab === 'primary' ? 'bg-coral-600 text-white' : 'bg-gray-200'}`}
-            onClick={() => setActiveTab('primary')}
-          >
-            {t('primary')}
-          </button>
-          <button
-            className={`tab-button px-4 py-2 rounded ${activeTab === 'secondary' ? 'bg-coral-600 text-white' : 'bg-gray-200'}`}
-            onClick={() => setActiveTab('secondary')}
-          >
-            {t('secondary')}
-          </button>
-        </div>
-        <div className="programs-list animate-fade-left">
-          {programs[activeTab].map(program => (
-            <div key={program.id} className="program-item bg-white shadow-md rounded-lg p-6 mb-4">
-              <h4 className="text-xl font-semibold">{program.title}</h4>
-              <p className="text-gray-600">{program.description}</p>
+        <h2 className="text-xl font-bold text-navy text-center mb-4 z-50">{t('programs_title')}</h2>
+        <div className="max-w-2xl mx-auto">
+          {['primary', 'secondary'].map(level => (
+            <div key={level} className="mb-2.5 animate-slide-up z-40">
+              <button
+                className="program-button w-full bg-navy text-navy p-2.5 rounded-md flex justify-between items-center z-50"
+                onClick={() => toggleCard(level)}
+              >
+                <span className="flex items-center gap-1.5">
+                  <i className={level === 'primary' ? "fas fa-star" : "fas fa-book"}></i>
+                  <span className="text-navy z-50">{t(level)}</span>
+                </span>
+                <i className={openCard === level ? "fas fa-chevron-up" : "fas fa-chevron-down"}></i>
+              </button>
+              <div
+                style={{ display: openCard === level ? 'block' : 'none' }}
+                className="program-content bg-white shadow-sm p-3 rounded-md mt-1.5 border border-charcoal z-40"
+              >
+                {programs[level] && programs[level].length > 0 ? (
+                  programs[level].map(program => (
+                    <div key={program.id} className="mb-2">
+                      <h4 className="text-base font-bold text-navy z-50">{program.title}</h4>
+                      <p className="text-charcoal z-50">{program.description}</p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-charcoal z-50">No programs available for {t(level)}.</p>
+                )}
+              </div>
             </div>
           ))}
+          {/* Hardcoded fallback card for testing */}
+          <div className="mb-2.5 animate-slide-up z-40">
+            <button
+              className="program-button w-full bg-navy text-navy p-2.5 rounded-md flex justify-between items-center z-50"
+              onClick={() => toggleCard('test')}
+            >
+              <span className="flex items-center gap-1.5">
+                <i className="fas fa-star"></i>
+                <span className="text-navy z-50">Test Program</span>
+              </span>
+              <i className={openCard === 'test' ? "fas fa-chevron-up" : "fas fa-chevron-down"}></i>
+            </button>
+            <div
+              style={{ display: openCard === 'test' ? 'block' : 'none' }}
+              className="program-content bg-white shadow-sm p-3 rounded-md mt-1.5 border border-charcoal z-40"
+            >
+              <h4 className="text-base font-bold text-navy z-50">Test Course</h4>
+              <p className="text-charcoal z-50">This is a test course for debugging.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -358,6 +466,19 @@ const Programs = () => {
 // Admissions Component
 const Admissions = () => {
   const { t } = useTranslation();
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = () => {
+    if (formData.name && formData.email && formData.message) {
+      gtag('event', 'admissions_inquiry', { event_category: 'Form', event_label: 'Admissions Inquiry' });
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      alert('Please fill all required fields');
+    }
+  };
 
   const handleDownload = () => {
     gtag('event', 'download_guide', { event_category: 'Button', event_label: 'Admissions Guide' });
@@ -366,17 +487,39 @@ const Admissions = () => {
 
   return (
     <section id="admissions" className="section">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/2 animate-fade-right">
-          <h2 className="text-3xl font-bold mb-4">{t('admissions_title')}</h2>
-          <p className="text-gray-600 mb-4">
-            Our admissions process is simple and transparent. Submit your application with academic records, a personal statement, and two references by June 30, 2025. Contact our admissions office for assistance.
-          </p>
-          <a href="#contact" className="button">{t('apply_now')}</a>
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-xl font-bold text-navy mb-4 z-50">{t('admissions_title')}</h2>
+        <p className="text-charcoal mb-4 max-w-md mx-auto z-50">
+          Become part of EduHub Schools! Submit your application by June 30, 2025.
+        </p>
+        <div className="admissions-form max-w-md mx-auto bg-card-bg shadow-sm p-4 rounded-md border border-charcoal animate-slide-up z-40">
+          {showSuccess && <p className="form-success text-yellow z-50">{t('form_success')}</p>}
+          <input
+            type="text"
+            placeholder={t('name')}
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="input"
+            aria-label={t('name')}
+          />
+          <input
+            type="email"
+            placeholder={t('email')}
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="input"
+            aria-label={t('email')}
+          />
+          <textarea
+            placeholder={t('message')}
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="input textarea"
+            aria-label={t('message')}
+          ></textarea>
+          <button onClick={handleSubmit} className="button">{t('submit')}</button>
         </div>
-        <div className="md:w-1/2 animate-fade-left">
-          <button onClick={handleDownload} className="button w-full">{t('download_guide')}</button>
-        </div>
+        <button onClick={handleDownload} className="button mt-3">{t('download_guide')}</button>
       </div>
     </section>
   );
@@ -386,35 +529,92 @@ const Admissions = () => {
 const Events = () => {
   const { t } = useTranslation();
   const events = [
-    { date: "2025-02-15", title: "Parent-Teacher Meeting", time: "10:00 AM", location: "Main Hall" },
+    { date: "2025-02-15", title: "Parent-Teacher Night", time: "10:00 AM", location: "Main Hall" },
     { date: "2025-03-10", title: "Science Fair", time: "9:00 AM", location: "Science Building" },
-    { date: "2025-04-20", title: "Sports Day", time: "8:00 AM", location: "Sports Field" }
+    { date: "2025-04-20", title: "Sports Festival", time: "8:00 AM", location: "Sports Field" }
   ];
 
   return (
     <section id="events" className="section">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6">{t('events_title')}</h2>
-        <table className="w-full bg-white shadow-md rounded-lg animate-fade-right">
-          <thead>
-            <tr className="bg-coral-600 text-white">
-              <th className="p-2">Date</th>
-              <th className="p-2">Event</th>
-              <th className="p-2">Time</th>
-              <th className="p-2">Location</th>
-            </tr>
-          </thead>
-          <tbody>
-            {events.map((event, index) => (
-              <tr key={index} className="border-t">
-                <td className="p-2 text-center">{event.date}</td>
-                <td className="p-2 text-center">{event.title}</td>
-                <td className="p-2 text-center">{event.time}</td>
-                <td className="p-2 text-center">{event.location}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <h2 className="text-xl font-bold text-navy text-center mb-4 z-50">{t('events_title')}</h2>
+        <div className="grid grid-cols-1 gap-2.5 max-w-2xl mx-auto">
+          {events.map((event, index) => (
+            <div key={index} className="event-card bg-white shadow-sm rounded-md p-4 border border-charcoal animate-slide-up z-40">
+              <div className="date-badge bg-yellow text-white rounded-full w-8 h-8 flex items-center justify-center mb-2 z-50">
+                {event.date.split('-')[2]}
+              </div>
+              <h4 className="text-base font-bold text-navy z-50">{event.title}</h4>
+              <p className="text-charcoal z-50">Time: {event.time}</p>
+              <p className="text-charcoal z-50">Location: {event.location}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Faculty Component
+const Faculty = () => {
+  const { t } = useTranslation();
+  const faculty = useSelector(state => state.faculty);
+
+  return (
+    <section id="faculty" className="section">
+      <div className="container mx-auto px-4">
+        <h2 className="text-xl font-bold text-navy text-center mb-4 z-50">{t('faculty_title')}</h2>
+        <div className="grid grid-cols-1 gap-2.5 max-w-2xl mx-auto">
+          {faculty.map(teacher => (
+            <div key={teacher.id} className="faculty-card bg-card-bg shadow-sm rounded-md p-4 border border-charcoal animate-slide-up z-40">
+              <img
+                src={teacher.image}
+                alt={teacher.name}
+                className="w-16 h-16 rounded-full mx-auto mb-2"
+                onError={(e) => (e.target.outerHTML = '<p className="text-center text-charcoal z-50">' + t('image_unavailable') + '</p>')}
+              />
+              <h4 className="text-base font-bold text-navy text-center z-50">{teacher.name}</h4>
+              <p className="text-charcoal text-center z-50">Subject: {teacher.subject}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Student Portal Component
+const StudentPortal = () => {
+  const { t } = useTranslation();
+  const { role, isAuthenticated } = useSelector(state => state.user);
+
+  return (
+    <section id="portal" className="section">
+      <div className="container mx-auto px-4">
+        <h2 className="text-xl font-bold text-navy text-center mb-4 z-50">{t('portal_title')}</h2>
+        <div className="max-w-md mx-auto bg-card-bg shadow-sm p-4 rounded-md border border-charcoal animate-slide-up z-40">
+          {isAuthenticated ? (
+            <>
+              <h3 className="text-base font-bold text-navy mb-2 z-50">
+                Welcome, {role.charAt(0).toUpperCase() + role.slice(1)}!
+              </h3>
+              {role === 'student' && (
+                <p className="text-charcoal z-50">Check your class schedule and assignments.</p>
+              )}
+              {role === 'faculty' && (
+                <p className="text-charcoal z-50">Access teaching materials and class management.</p>
+              )}
+              {role === 'admin' && (
+                <p className="text-charcoal z-50">Manage users and school resources.</p>
+              )}
+            </>
+          ) : (
+            <>
+              <p className="text-charcoal mb-2 z-50">Log in to access the portal.</p>
+              <a href="#welcome" className="button">{t('login')}</a>
+            </>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -439,60 +639,58 @@ const ContactMap = () => {
 
   return (
     <section id="contact" className="section">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/2 animate-fade-right">
-          <h2 className="text-3xl font-bold mb-4">{t('contact_title')}</h2>
-          {showSuccess && <p className="form-success text-coral-600">{t('form_success')}</p>}
-          <div className="contact-form">
-            <input
-              type="text"
-              placeholder={t('name')}
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="input"
-              aria-label={t('name')}
-            />
-            <input
-              type="email"
-              placeholder={t('email')}
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="input"
-              aria-label={t('email')}
-            />
-            <input
-              type="text"
-              placeholder={t('subject')}
-              value={formData.subject}
-              onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-              className="input"
-              aria-label={t('subject')}
-            />
-            <textarea
-              placeholder={t('message')}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="input textarea"
-              aria-label={t('message')}
-            ></textarea>
-            <button onClick={handleSubmit} className="button">{t('submit')}</button>
-          </div>
-        </div>
-        <div className="md:w-1/2 animate-fade-left">
-          <h2 className="text-3xl font-bold mb-4">{t('map_title')}</h2>
+      <div className="container mx-auto px-4">
+        <h2 className="text-xl font-bold text-navy text-center mb-4 z-50">{t('map_title')}</h2>
+        <div className="max-w-2xl mx-auto animate-slide-up z-40">
           {MapContainer ? (
-            <MapContainer center={[6.5244, 3.3792]} zoom={15} style={{ height: "400px", width: "100%" }}>
+            <MapContainer center={[6.5244, 3.3792]} zoom={15} style={{ height: "250px", width: "100%", borderRadius: '6px', border: '1px solid #374151' }}>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
               />
               <Marker position={[6.5244, 3.3792]}>
-                <Popup>EduHub Schools Main Campus</Popup>
+                <Popup>EduHub Schools Campus</Popup>
               </Marker>
             </MapContainer>
           ) : (
-            <p className="text-red-500 text-center">Map unavailable due to loading issues</p>
+            <p className="text-red-500 text-center z-50">Map unavailable due to loading issues</p>
           )}
+        </div>
+        <h2 className="text-xl font-bold text-navy text-center mt-4 mb-4 z-50">{t('contact_title')}</h2>
+        <div className="contact-form max-w-md mx-auto bg-card-bg shadow-sm p-4 rounded-md border border-charcoal animate-slide-up z-40">
+          {showSuccess && <p className="form-success text-yellow z-50">{t('form_success')}</p>}
+          <input
+            type="text"
+            placeholder={t('name')}
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="input"
+            aria-label={t('name')}
+          />
+          <input
+            type="email"
+            placeholder={t('email')}
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="input"
+            aria-label={t('email')}
+          />
+          <input
+            type="text"
+            placeholder={t('subject')}
+            value={formData.subject}
+            onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+            className="input"
+            aria-label={t('subject')}
+          />
+          <textarea
+            placeholder={t('message')}
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="input textarea"
+            aria-label={t('message')}
+          ></textarea>
+          <button onClick={handleSubmit} className="button">{t('submit')}</button>
         </div>
       </div>
     </section>
@@ -517,12 +715,12 @@ const VirtualTour = () => {
   return (
     <section id="tour" className="section">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6">{t('virtual_tour')}</h2>
+        <h2 className="text-xl font-bold text-navy text-center mb-4 z-50">{t('virtual_tour')}</h2>
         <button onClick={() => setIsTourOpen(!isTourOpen)} className="button mx-auto block">
           {isTourOpen ? 'Close Tour' : 'Start Virtual Tour'}
         </button>
         {isTourOpen && (
-          <div id="tour-container" className="mt-4" style={{ height: '400px', width: '100%' }}></div>
+          <div id="tour-container" className="mt-2.5 rounded-md border border-charcoal animate-slide-up z-40" style={{ height: '250px', width: '100%' }}></div>
         )}
       </div>
     </section>
@@ -536,18 +734,17 @@ const Notifications = () => {
   const notifications = useSelector(state => state.notifications);
 
   useEffect(() => {
-    // Mock WebSocket notification
-    const mockNotification = { id: 1, message: t('notification', { date: 'March 10, 2025' }) };
+    const mockNotification = [{ id: 1, message: t('notification', { date: 'March 10, 2025' }) }];
     dispatch({ type: 'ADD_NOTIFICATION', payload: mockNotification });
   }, [dispatch, t]);
 
   return (
-    <div className="fixed bottom-4 right-4 z-20">
+    <div className="fixed bottom-3 right-3 z-50">
       {notifications.map((notif, index) => (
-        <div key={index} className="notification bg-coral-600 text-white p-4 rounded shadow-md mb-2 animate-fade-right">
-          {notif.message}
+        <div key={index} className="notification bg-navy text-white p-2.5 rounded-md shadow-md mb-1.5 z-50">
+          <span className="text-white z-50">{notif.message}</span>
           <button
-            className="ml-2 text-white font-bold"
+            className="ml-1.5 text-white font-bold z-50"
             onClick={() => dispatch({ type: 'ADD_NOTIFICATION', payload: [] })}
           >
             ✕
@@ -560,38 +757,53 @@ const Notifications = () => {
 
 // Footer Component
 const Footer = () => {
+  const { t } = useTranslation();
   return (
-    <footer className="bg-coral-600 text-white py-4 text-center">
-      <p>EduHub Schools &copy; 2025 | contact@eduhub.org</p>
+    <footer className="footer bg-white z-50 shadow-sm">
+      <div className="container mx-auto px-4 flex justify-between items-center py-2">
+        <h3 className="text-xl font-bold text-navy z-50">EduHub Schools</h3>
+        <div className="flex gap-2 z-50">
+          <a href="https://twitter.com" target="_blank" className="text-navy hover:text-yellow z-50"><i className="fab fa-twitter"></i></a>
+          <a href="https://facebook.com" target="_blank" className="text-navy hover:text-yellow z-50"><i className="fab fa-facebook"></i></a>
+          <a href="https://instagram.com" target="_blank" className="text-navy hover:text-yellow z-50"><i className="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <p className="text-center text-navy text-sm mt-2 z-50">EduHub Schools &copy; 2025</p>
     </footer>
   );
 };
 
 // Main App Component
 const App = () => {
-  const [theme, setTheme] = useState('primary');
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = (newTheme) => {
+    console.log('Switching theme to:', newTheme); // Debug log
     setTheme(newTheme);
-    document.documentElement.classList.remove('theme-primary', 'theme-secondary');
+    document.documentElement.classList.remove('theme-light', 'theme-dark', 'theme-primary', 'theme-secondary');
     document.documentElement.classList.add(`theme-${newTheme}`);
   };
 
   return (
     <Provider store={store}>
-      <div className={`theme-${theme}`}>
-        <Header toggleTheme={toggleTheme} />
-        <Notifications />
-        <main>
-          <Homepage />
-          <Programs />
-          <Admissions />
-          <Events />
-          <VirtualTour />
-          <ContactMap />
-        </main>
-        <Footer />
-      </div>
+      <ErrorBoundary>
+        <div className={`theme-${theme}`}>
+          <Header toggleTheme={toggleTheme} />
+          <Notifications />
+          <main>
+            <Welcome />
+            <Homepage />
+            <Programs />
+            <Admissions />
+            <Events />
+            <Faculty />
+            <StudentPortal />
+            <VirtualTour />
+            <ContactMap />
+          </main>
+          <Footer />
+        </div>
+      </ErrorBoundary>
     </Provider>
   );
 };
