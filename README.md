@@ -36,69 +36,8 @@ cd C:\Users\USER\schoolwebsite
 http-server
 
 
-Open http://127.0.0.1:8080 in Chrome.
+Open http://127.0.0.1:8080
 
-
-Deployment
-
-GitHub Pages:
-Initialize Git:
-cd C:\Users\USER\schoolwebsite
-git init
-git add .
-git commit -m "Commit Message"
-git remote add origin https://github.com/your-username/school-website.git
-git push -u origin main
-
-
-In GitHub, Settings > Pages, select main branch, / (root).
-
-Visit https://your-username.github.io/school-website.
-
-
-
-Netlify: Drag and drop schoolwebsite folder or connect GitHub repo at netlify.com.
-
-Testing
-
-Open http://127.0.0.1:8080 in Chrome (12:46 PM WAT, Sep 25, 2025).
-Test responsiveness with Chrome DevTools (mobile, tablet, desktop).
-Check DevTools > Console for errors.
-Clear cache or use Incognito mode (Ctrl+Shift+N).
-Verify:
-Programs: Expandable cards show Primary (“Math Quest”, “Science Explorers”), Secondary (“Biology Adventures”, “Creative Writing”), and test card (“Test Course”) with solid white card background (#FFFFFF), Navy Blue #1E3A8A dropdown text and titles, Charcoal Gray #374151 descriptions, z-index: 50.
-Theme Toggle: Avatar dropdown shows Light/Dark/Primary/Secondary options at the top, switches themes (Light: #E6FFFA, Dark: #1F2937).
-Footer: White background, centered logo (1.25rem), social icons, copyright, Navy Blue #1E3A8A text, z-index: 50, no nav links.
-Background: Soft Mint Green (#E6FFFA) with book/pencil pattern (20px, 0.05 opacity).
-Header: Centered logo (1.25rem), single-line nav (0.9rem), avatar dropdown.
-Homepage: News cards with school images.
-Admissions: Centered form, download button.
-Events: Cards with badges, solid white background (#FFFFFF).
-Faculty: Cards with school-themed images.
-Student Portal: Role-based content or login.
-Contact/Map: Map above form.
-Virtual Tour: Pannellum viewer.
-Design: Navy (#1E3A8A), Yellow (#FBBF24), Mint Green (#E6FFFA), Montserrat/Lato, slide-up animations.
-Spacing: 1.25rem section padding, gap-2.5 for cards.
-Images: School-themed (picsum.photos, e.g., ?random=30) or “Image Unavailable”.
-No blank page: Error boundaries display fallback.
-
-
-
-Troubleshooting
-
-Programs Text Not Visible: Check DevTools > Elements for .program-content (background-color: #FFFFFF). Verify .program-button has color: #1E3A8A. Log store.getState().programs in Console. Confirm toggleCard and openCard state.
-
-Theme Toggle Not Showing: Inspect .theme-select in DevTools for display: block, visibility: visible, z-index: 60. Log isDropdownOpen in Console. Clear cache (Ctrl+Shift+R) or use Incognito (Ctrl+Shift+N).
-
-Footer Content: Verify .footer has background-color: #FFFFFF, color: #1E3A8A, no .nav, only logo, social icons, and copyright.
-
-CDN Errors: Check internet (ping cdn.jsdelivr.net). Use local dependencies:
-npm install leaflet react-leaflet pannellum i18next react-i18next
-
-Copy to schoolwebsite/lib/ and update <script> tags.
-
-Blank Page: Check DevTools > Console. Ensure CDNs load (status 200). Refresh or clear cache.
 
 
 Notes
